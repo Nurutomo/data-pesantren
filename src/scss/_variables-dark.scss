@@ -1,0 +1,57 @@
+$primary-dark:       desaturate($primary, 10%) !default;
+$success-dark:       desaturate($success, 10%) !default;
+$info-dark:          desaturate($info, 10%) !default;
+$warning-dark:       desaturate($warning, 10%) !default;
+$danger-dark:        desaturate($danger, 10%) !default;
+
+$primary-text-emphasis-dark:    shade-color($primary-dark, 60%) !default;
+$success-text-emphasis-dark:    shade-color($success-dark, 60%) !default;
+$info-text-emphasis-dark:       shade-color($info-dark, 60%) !default;
+$warning-text-emphasis-dark:    shade-color($warning-dark, 60%) !default;
+$danger-text-emphasis-dark:     shade-color($danger-dark, 60%) !default;
+
+$primary-bg-subtle-dark:        tint-color($primary-dark, 80%) !default;
+$success-bg-subtle-dark:        tint-color($success-dark, 80%) !default;
+$info-bg-subtle-dark:           tint-color($info-dark, 80%) !default;
+$warning-bg-subtle-dark:        tint-color($warning-dark, 80%) !default;
+$danger-bg-subtle-dark:         tint-color($danger-dark, 80%) !default;
+
+$primary-border-subtle-dark:    tint-color($primary-dark, 60%) !default;
+$success-border-subtle-dark:    tint-color($success-dark, 60%) !default;
+$info-border-subtle-dark:       tint-color($info-dark, 60%) !default;
+$warning-border-subtle-dark:    tint-color($warning-dark, 60%) !default;
+$danger-border-subtle-dark:     tint-color($danger-dark, 60%) !default;
+
+
+$primary-gradient-dark: (
+  "start":  tint-color($primary-dark, 10%),
+  "stop":   shade-color($primary-dark, 10%)
+) !default;
+
+$danger-gradient-dark: (
+  "start":  tint-color($danger-dark, 10%),
+  "stop":   shade-color($danger-dark, 10%)
+) !default;
+
+$warning-gradient-dark: (
+  "start":  tint-color($warning-dark, 10%),
+  "stop":   shade-color($warning-dark, 10%)
+) !default;
+
+$success-gradient-dark: (
+  "start":  tint-color($success-dark, 10%),
+  "stop":   shade-color($success-dark, 10%)
+) !default;
+
+$info-gradient-dark: (
+  "start":  tint-color($info-dark, 10%),
+  "stop":   shade-color($info-dark, 10%)
+) !default;
+
+$theme-gradients-dark: (
+  "primary":    $primary-gradient-dark,
+  "success":    $success-gradient-dark,
+  "info":       $info-gradient-dark,
+  "warning":    $warning-gradient-dark,
+  "danger":     $danger-gradient-dark
+) !default;

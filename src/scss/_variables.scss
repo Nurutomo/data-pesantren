@@ -1,0 +1,60 @@
+// Variable overrides
+//
+// If you want to customize your project please add your variables below.
+
+$enable-deprecation-messages: false !default;
+
+$primary:   #39f !default;
+$success:   #51cc8a !default;
+$danger:    #ef376e !default;
+$warning:   #fc0 !default;
+$info:      #747af2 !default;
+
+$primary-text-emphasis:   shade-color($primary, 60%) !default;
+$success-text-emphasis:   shade-color($success, 60%) !default;
+$info-text-emphasis:      shade-color($info, 60%) !default;
+$warning-text-emphasis:   shade-color($warning, 60%) !default;
+$danger-text-emphasis:    shade-color($danger, 60%) !default;
+
+$primary-bg-subtle:       tint-color($primary, 80%) !default;
+$success-bg-subtle:       tint-color($success, 80%) !default;
+$info-bg-subtle:          tint-color($info, 80%) !default;
+$warning-bg-subtle:       tint-color($warning, 80%) !default;
+$danger-bg-subtle:        tint-color($danger, 80%) !default;
+
+$primary-border-subtle:   tint-color($primary, 60%) !default;
+$success-border-subtle:   tint-color($success, 60%) !default;
+$info-border-subtle:      tint-color($info, 60%) !default;
+$warning-border-subtle:   tint-color($warning, 60%) !default;
+$danger-border-subtle:    tint-color($danger, 60%) !default;
+
+$primary-gradient: (
+  "start":  tint-color($primary, 30%),
+  "stop":   shade-color($primary, 10%)
+) !default;
+
+$danger-gradient: (
+  "start":  tint-color($danger, 30%),
+  "stop":   shade-color($danger, 10%)
+) !default;
+
+$warning-gradient: (
+  "start":  tint-color($warning, 30%),
+  "stop":   shade-color($warning, 10%)
+) !default;
+
+$success-gradient: (
+  "start":  tint-color($success, 30%),
+  "stop":   shade-color($success, 10%)
+) !default;
+
+$info-gradient: (
+  "start":  tint-color($info, 30%),
+  "stop":   shade-color($info, 10%)
+) !default;
+
+$font-size-base:            .9375rem !default;
+$border-color-translucent:  rgba(#080a0c, .0875) !default;
+$footer-bg:                 var(--cui-body-bg) !default;
+$table-cell-padding-y:      .75rem !default;
+$table-cell-padding-x:      .75rem !default;
