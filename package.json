@@ -1,31 +1,40 @@
 {
-  "name": "@coreui/coreui-pro-react-admin-template-typescript",
-  "version": "5.1.0",
-  "description": "CoreUI PRO React Admin Template TypeScript",
+  "name": "data-pesantren",
+  "version": "0.1.0",
+  "description": "Dashboard data pesantren",
+  "main": "./build/server/index.js",
+  "type": "module",
   "config": {
     "theme": "modern",
-    "zipPrefix": ".zip/coreui-pro-react-admin-template-typescript-theme",
+    "zipPrefix": ".zip/data-pesantren",
     "bundler": "vite"
   },
   "homepage": ".",
   "bugs": {
-    "url": "https://github.com/coreui/coreui-pro-react-admin-template-typescript/issues"
+    "url": "https://github.com/Nurutomo/data-pesantren/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:coreui/coreui-pro-react-admin-template-typescript.git"
+    "url": "git@github.com:Nurutomo/data-pesantren.git"
   },
   "license": "SEE LICENSE IN LICENSE",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
+  "author": "Nurutomo",
   "scripts": {
-    "build": "vite build",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --config ./src/client/vite.config.mts",
+    "build:server": "tsc --build ./src/server/tsconfig.json",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "serve": "vite preview",
-    "start": "vite",
+    "dev": "nodemon -e ts,js -w \"./src\" -x \"npm run build && npm run serve\"",
+    "dev:server": "nodemon -e ts,js -w \"./src/server\" -x \"npm run build:server && npm run serve\"",
+    "dev:client": "nodemon -e ts,tsx,js,jsx,css,scss -w \"./src/client\" -x \"npm run build:client\"",
+    "serve": "node ./build/server/index.js",
+    "tsc": "tsc",
+    "start": "vite --config ./src/client/vite.config.mts",
     "type-check": "tsc --noEmit",
     "zip": "git archive -o $npm_package_config_zipPrefix-$npm_package_config_theme-$npm_package_config_bundler-v$npm_package_version.zip -9 HEAD"
   },
   "dependencies": {
+    "@commonify/lowdb": "^3.0.0",
     "@coreui/chartjs": "^4.0.0",
     "@coreui/coreui-pro": "^5.2.0",
     "@coreui/icons": "^3.0.1",
@@ -40,12 +49,18 @@
     "@fullcalendar/timegrid": "^6.1.14",
     "@popperjs/core": "^2.11.8",
     "@react-google-maps/api": "^2.19.3",
+    "argon2": "^0.40.3",
     "chart.js": "^4.4.3",
     "classnames": "^2.5.1",
+    "cookie-parser": "^1.4.6",
     "core-js": "^3.37.1",
+    "express": "^4.19.2",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
+    "libphonenumber-js": "^1.11.5",
+    "lowdb": "^7.0.1",
+    "mailchecker": "^6.0.5",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -56,6 +71,8 @@
     "simplebar-react": "^3.2.5"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.7",
+    "@types/express": "^4.17.21",
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
@@ -69,6 +86,7 @@
     "eslint-plugin-react": "^7.34.2",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "exceljs": "^4.4.0",
     "postcss": "^8.4.38",
     "prettier": "3.3.2",
     "sass": "^1.77.5",

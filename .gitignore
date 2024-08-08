@@ -1,5 +1,8 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# databases
+.*.json
+
 # dependencies
 /node_modules
 package-lock.json
@@ -10,6 +13,7 @@ yarn.lock
 
 # production
 /build
+/dist
 
 # misc
 .eslintcache

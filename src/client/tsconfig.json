@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "src/client/*": ["/"]
+    },
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "strict": true
+  },
+  "extends": "../../tsconfig.json",
+  "exclude": [
+    "src/server"
+  ],
+  "include": ["vite.config.mts"]
+}
