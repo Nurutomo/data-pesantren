@@ -461,8 +461,7 @@ const _nav: NavItem[] = [
     component: CNavGroup,
     name: 'Data',
     icon: <CIcon icon={cilAddressBook} customClassName="nav-icon" />,
-    items: Object.keys(REGIONAL_CODE).map(name => {
-      console.log(name, typeof name)
+    items: Object.keys(REGIONAL_CODE).filter(name => Number.isNaN(parseInt(name))).map(name => {
       return {
         component: CNavItem,
         name,

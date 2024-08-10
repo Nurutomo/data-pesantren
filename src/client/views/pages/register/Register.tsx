@@ -8,14 +8,9 @@ import {
   CContainer,
   CForm,
   CFormInput,
-  CInputGroup,
-  CInputGroupText,
   CRow,
 } from '@coreui/react-pro'
-import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
 import { API } from '../../../api'
-import { redirect } from 'react-router-dom'
 
 type Forms = {
   email: string
@@ -46,7 +41,7 @@ const Register = () => {
   const register = async () => {
     try {
       const res = await API.register(input.email, input.password)
-      redirect('/login')
+      location.pathname = '/login'
     } catch (e) {
       setErr(e.toString())
       setValid({

@@ -205,7 +205,7 @@ const routes: Route[] = [
   { path: '/apps/email/compose', name: 'Compose', exact: true },
   { path: '/apps/email/message', name: 'Message', exact: true },
   { path: '/regional', name: 'Regional', exact: true, element: Regionals()},
-  ...Object.keys(REGIONAL_CODE).map((name) => {
+  ...Object.keys(REGIONAL_CODE).filter(name => Number.isNaN(parseInt(name))).map((name) => {
     return {
       path: `/regional/${name}`,
       name,

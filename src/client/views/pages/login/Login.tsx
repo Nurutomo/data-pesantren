@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import {
   CAlert,
   CButton,
@@ -10,12 +10,8 @@ import {
   CContainer,
   CForm,
   CFormInput,
-  CInputGroup,
-  CInputGroupText,
   CRow,
 } from '@coreui/react-pro'
-import CIcon from '@coreui/icons-react'
-import { cilLockLocked, cilUser } from '@coreui/icons'
 import { API } from '../../../api'
 
 type Forms = {
@@ -41,7 +37,7 @@ const Login = () => {
   const login = async () => {
     try {
       const res = await API.login(input.email, input.password)
-      redirect('/dashboard')
+      location.pathname = '/dashboard'
     } catch (e) {
       setErr(e.toString())
       setValid({

@@ -63,7 +63,7 @@ const Dashboard = () => {
 
   const years = data.reduce((prev, curr) => {
     let key = new Date(curr.regDate || 0).getFullYear()
-    let value = (prev[key] || 0) +  1
+    let value = (prev[key] || 0) + 1
     return { ...prev, [key]: value }
   }, {})
   const totalY = Object.values(years).map((_, i, o) =>
@@ -72,14 +72,14 @@ const Dashboard = () => {
   )
   const pondoks = data.reduce((prev, curr) => {
     let key = REGIONAL_CODE[curr.regionalCode]
-    let value = (prev[key] || 0) +  1
+    let value = (prev[key] || 0) + 1
     return { ...prev, [key]: value }
   }, {})
   const Pondok = Object.fromEntries(Object.keys(years).map((year) => [
-      year,
-      Object.values(REGIONAL_CODE).map(region => data.filter(pondok => pondok.regionalCode === region && new Date(pondok.regDate || 0).getFullYear().toString() === year))
-      // (region) => countByColumn(region, 'TAHUN', formatYear)[year] || 0),
-    ]))
+    year,
+    Object.keys(REGIONAL_CODE).filter(name => Number.isNaN(parseInt(name))).map(region => data.filter(pondok => pondok.regionalCode === REGIONAL_CODE[region] && new Date(pondok.regDate || 0).getFullYear().toString() === year))
+    // (region) => countByColumn(region, 'TAHUN', formatYear)[year] || 0),
+  ]))
   return (
     <>
       <CRow>
@@ -164,7 +164,10 @@ const Dashboard = () => {
                       <CIcon icon={cilPeople} size="xl" />
                     </div>
                   </div>
-                  <div className="fs-4 fw-semibold pb-3">{'±' + data.map(v => v.memberCount || 0).reduce((prev, curr) => prev + curr, 0)}</div>
+                  <div className="fs-4 fw-semibold pb-3">±{data.map(v => v.memberCount ? v.memberCount : 0).reduce((prev, curr) => {
+                    console.log({ prev, curr, result: prev + curr })
+                    return prev + curr
+                  }, 0)}</div>
                   <small className="text-danger">
                     (-12.4% <CIcon icon={cilArrowBottom} />)
                   </small>

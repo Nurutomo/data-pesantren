@@ -13,6 +13,8 @@ import parsePhoneNumber, { PhoneNumber } from 'libphonenumber-js'
 import { Pondok, REGIONAL_CODE } from '../../../types'
 import { MPJ } from '../../api'
 import { Item } from '@coreui/react-pro/dist/esm/components/smart-table/types'
+import CIcon from '@coreui/icons-react'
+import { cibWhatsapp } from '@coreui/icons'
 
 const Regionals: React.FC<{
   region?: REGIONAL_CODE
@@ -90,17 +92,22 @@ const Regionals: React.FC<{
                   {item.memberCount && <p>{item.memberCount} Anggota</p>}
                   <p>{item.city}</p>
                   <p><a href={`mailto:${item.email}`}>{item.email}</a></p>
+                  {item.linkMap && <p><a href={`${item.linkMap}`}>{item.linkMap}</a></p>}
                   <CListGroup>
                     {admins && admins.map(admin =>
                       <CListGroupItem
                         className="d-flex justify-content-between align-items-center"
                         as="a"
-                        href={admin.phoneNumber?.getURI()}
+                        {...(admin.phoneNumber ? { href: admin.phoneNumber.getURI() } : {})}
                       >
                         {admin.name}
-                        {admin.phoneNumber && <CBadge color="primary" shape="rounded-pill">
-                          {admin.phoneNumber.formatInternational()}
-                        </CBadge>}
+                        {admin.phoneNumber && (<>
+                          <CIcon icon={cibWhatsapp}></CIcon>
+                          <CBadge color="primary" shape="rounded-pill">
+                            {admin.phoneNumber.formatInternational()}
+                          </CBadge>
+                        </>
+                        )}
                       </CListGroupItem>
                     )}
                   </CListGroup>

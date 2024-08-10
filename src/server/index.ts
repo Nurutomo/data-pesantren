@@ -5,6 +5,8 @@ import express from 'express'
 import { auth, data } from './routes/index.js'
 import Data from './types.js'
 import { Low } from 'lowdb'
+import WS from 'ws'
+import { watch } from 'fs'
 
 const app = express()
 const port = 3000
@@ -52,7 +54,8 @@ app.use('/data', data)
 // })
 
 app.get('/', (_req, res) => res.redirect('/login'))
-app.use(express.static(path.join(__dirname, '../client')))
+const clientStaticPath = path.join(__dirname, '../client')
+app.use(express.static(clientStaticPath))
 app.get(['/login', '/register'], (req, res) => {
     if (req.user !== undefined) return res.redirect('/dashboard')
     res.sendFile(path.join(__dirname, '../client', 'index.html'))
@@ -65,7 +68,22 @@ app.get('*', (req, res) => {
     res.redirect('/login')
 })
 
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`App listening on port ${port}`)
+})
+
+const ws = new WS.Server({ noServer: true })
+
+ws.on('connection', () => {
+    watch(clientStaticPath, () => {
+        ws.clients.forEach(wss => {
+            wss.emit('refresh')
+        })
+    })
+})
+
+server.on('upgrade', (req, socket, head) => {
+  ws.handleUpgrade(req, socket, head, (ws) => {
+    ws.emit('connection', ws, req)
+  })
 })
