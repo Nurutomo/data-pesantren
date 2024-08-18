@@ -1,4 +1,5 @@
 export enum REGIONAL_CODE {
+    'Unknown' = 0,
     'MALANG RAYA' = 1,
     'BLITAR' = 2,
     'TULUNGAGUNG TRENGGALEK' = 3,

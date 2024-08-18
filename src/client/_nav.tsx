@@ -42,6 +42,12 @@ const _nav: NavItem[] = [
     to: '/struktur',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
   },
+  {
+    component: CNavItem,
+    name: 'Edit Data',
+    to: '/edit',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />
+  },
   // {
   //   component: CNavTitle,
   //   name: <Translation>{(t) => t('theme')}</Translation>,

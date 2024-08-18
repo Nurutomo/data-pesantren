@@ -40,7 +40,7 @@ export const AppSidebarNav = ({ items }: { items: NavItem[] }) => {
     return (
       <Component as="div" key={index}>
         {rest.to || rest.href ? (
-          <CNavLink reloadDocument {...(rest.to && { as: NavLink })} {...rest} onClick={(e) => console.log(e)}>
+          <CNavLink reloadDocument {...(rest.to && { as: NavLink })} {...rest}>
             {navLink(name, icon, badge, indent)}
           </CNavLink>
         ) : (

@@ -5,8 +5,8 @@ import express from 'express'
 import { auth, data } from './routes/index.js'
 import Data from './types.js'
 import { Low } from 'lowdb'
-import WS from 'ws'
-import { watch } from 'fs'
+// import WS from 'ws'
+// import { watch } from 'fs'
 
 const app = express()
 const port = 3000
@@ -68,22 +68,23 @@ app.get('*', (req, res) => {
     res.redirect('/login')
 })
 
-const server = app.listen(port, () => {
+// const server = 
+app.listen(port, () => {
     console.log(`App listening on port ${port}`)
 })
 
-const ws = new WS.Server({ noServer: true })
+// const ws = new WS.Server({ noServer: true })
 
-ws.on('connection', () => {
-    watch(clientStaticPath, () => {
-        ws.clients.forEach(wss => {
-            wss.emit('refresh')
-        })
-    })
-})
+// ws.on('connection', () => {
+//     watch(clientStaticPath, () => {
+//         ws.clients.forEach(wss => {
+//             wss.emit('refresh')
+//         })
+//     })
+// })
 
-server.on('upgrade', (req, socket, head) => {
-  ws.handleUpgrade(req, socket, head, (ws) => {
-    ws.emit('connection', ws, req)
-  })
-})
+// server.on('upgrade', (req, socket, head) => {
+//   ws.handleUpgrade(req, socket, head, (ws) => {
+//     ws.emit('connection', ws, req)
+//   })
+// })

@@ -72,6 +72,7 @@ const GoogleMaps = React.lazy(() => import('./views/plugins/google-maps/GoogleMa
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'))
 
 const Invoice = React.lazy(() => import('./views/apps/invoicing/Invoice'))
+const InputData = React.lazy(() => import('./views/InputData'))
 
 // Regional
 const Regionals = (region?: REGIONAL_CODE) =>
@@ -204,6 +205,7 @@ const routes: Route[] = [
   { path: '/apps/email/inbox', name: 'Inbox', exact: true },
   { path: '/apps/email/compose', name: 'Compose', exact: true },
   { path: '/apps/email/message', name: 'Message', exact: true },
+  { path: '/edit', name: 'Edit Data', exact: true, element: InputData},
   { path: '/regional', name: 'Regional', exact: true, element: Regionals()},
   ...Object.keys(REGIONAL_CODE).filter(name => Number.isNaN(parseInt(name))).map((name) => {
     return {

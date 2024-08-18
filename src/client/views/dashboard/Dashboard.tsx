@@ -164,10 +164,7 @@ const Dashboard = () => {
                       <CIcon icon={cilPeople} size="xl" />
                     </div>
                   </div>
-                  <div className="fs-4 fw-semibold pb-3">±{data.map(v => v.memberCount ? v.memberCount : 0).reduce((prev, curr) => {
-                    console.log({ prev, curr, result: prev + curr })
-                    return prev + curr
-                  }, 0)}</div>
+                  <div className="fs-4 fw-semibold pb-3">±{data.map(v => isNaN(v.memberCount || 0) ? 0 : parseInt(v.memberCount as unknown as string)).reduce((prev, curr) => prev + curr, 0)}</div>
                   <small className="text-danger">
                     (-12.4% <CIcon icon={cilArrowBottom} />)
                   </small>
